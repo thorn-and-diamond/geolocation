@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Geolocation</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <p>Click the button to get your coordinates.</p>
+    <button onclick="getLocation()">Try It</button>
+    <p id="demo"></p>
+    <script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            /* navigator.geolocation.getCurrentPosition(showPosition);*/
+            navigator.geolocation.getCurrentPosition(getWeather);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function getWeather(position) {
+
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        jQuery(document).ready(function($) {
+            $.ajax({
+                url: "https://api.wunderground.com/api/6887efd8390c8e5e/geolookup/conditions/q/" +
+                    position.coords.latitude + "," + position.coords.longitude + ".json",
+                dataType: "jsonp",
+                success: function(parsed_json) {
+                    var city = parsed_json['location']['city'];
+                    var st = parsed_json['location']['state'];
+                    var temp_f = parsed_json['current_observation']['temp_f'];
+                    var weather = parsed_json['current_observation']['weather'];
+
+                    alert("City: " + city + " State: " + st + " Temp: " + temp_f + " Weather: " + weather);
+
+                }
+            });
+        });
+    }
+    </script>
+</body>
+
+</html>
