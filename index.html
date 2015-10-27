@@ -28,63 +28,60 @@
         </div>
     </div>
 </header>
+
 <body>
-  <div class="row">
-    <div class="col-xs-12">
-        <!-- navigation -->
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- navigation -->
             <div class="list-group">
-              <a href="#todaysWeather" class="list-group-item active">Today's Weather<a>
+                <a href="#todaysWeather" class="list-group-item active">Today's Weather<a>
               <a href="#sevenDayForecast" class="list-group-item">7 Day Weather</a>
-              <a href="#whatToWear" class="list-group-item"> What to wear</a>
-              <a href="#map" class="list-group-item"> Map</a>
+                <a href="#whatToWear" class="list-group-item"> What to wear</a>
+                <a href="#map" class="list-group-item"> Map</a>
             </div>
+        </div>
     </div>
-</div>
-<!-- Today's Weather -->
+    <!-- Today's Weather -->
     <div class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10">
-      <a name="#todaysWeather"> Today's Weather </a>
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. 
-      </p> 
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <a name="#todaysWeather"> Today's Weather </a>
+            <p>
+                <div id="todaysWeather"></div>
+            </p>
+        </div>
+        <div class="col-xs-1"></div>
     </div>
-    <div class="col-xs-1"></div>
-    </div>
-
-<!-- 7 day Weather -->
+    <!-- 7 day Weather -->
     <div class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10">
-      <a name="sevenDayForecast"> 7 Day Forecast </a>
-      <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. 
-      </p>
-
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <a name="sevenDayForecast"> 7 Day Forecast </a>
+            <p>
+            </p>
+        </div>
+        <div class="col-xs-1"></div>
     </div>
-    <div class="col-xs-1"></div>
-    </div>
-  
-<!-- What to wear -->
+    <!-- What to wear -->
     <div class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10">
-      <a name="whatToWear"> What to Wear </a>
-      <p>
-        Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt   mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. 
-        </p>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <a name="whatToWear"> What to Wear </a>
+            <p>
+                <div id="whatToWear"></div>
+            </p>
+        </div>
+        <div class="col-xs-1"></div>
     </div>
-    <div class="col-xs-1"></div>
+    <!-- Live Map -->
+    <div class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-10">
+            <a name="map">Map</a>
+            <p> </p>
+        </div>
+        <div class="col-xs-1"></div>
     </div>
-
-<!-- Live Map -->
-   <div class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-10">
-        <a name="map">Map</a>
-        <p> Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt   mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. </p>
-    </div>
-    <div class="col-xs-1"></div>
-    </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <p>Click the button to get your coordinates.</p>
     <button onclick="getLocation()">Try It</button>
@@ -117,10 +114,101 @@
                     var weather = parsed_json['current_observation']['weather'];
 
                     alert("City: " + city + " State: " + st + " Temp: " + temp_f + " Weather: " + weather);
-
+                    $('#todaysWeather').append("City: " + city + " State: " + st + " Temp: " + temp_f + " Weather: " + weather);
+                    $('#whatToWear').append(weatherAccessories(weather));
                 }
             });
         });
+    }
+    //function that loads additional acsesories depending on weather (rain, sunny etc.)
+    var weatherAccessories = function(weatherStr) {
+        var weatherArr = {
+            'Light Drizzle': 'Umbrella, Rainboots, Rain Jacket',
+            'Light Drizzle': 'Umbrella, Rainboots, Rain Jacket',
+            'Light Rain': 'Umbrella, Rainboots, Rain Jacket',
+            'Heavy Rain': 'Umbrella, Rainboots, Rain Jacket',
+            'Light Snow': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Heavy Snow': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Light Snow Grains': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Light Snow Grains': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Heavy Snow Grains': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Light Ice Crystals': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Heavy Ice Crystals': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Light Ice Pellets': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Heavy Ice Pellets': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Light Hail': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Heavy Hail': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            'Light Mist': 'Light Jacket',
+            'Heavy Mist': 'Light Jacket',
+            'Light Fog': 'Light Jacket',
+            'Heavy Fog': 'Light Jacket',
+            'Light Fog Patches': 'Light Jacket',
+            'Heavy Fog Patches': 'Light Jacket',
+            'Light Smoke': 'Avoid going outside',
+            'Heavy Smoke': 'Avoid going outside',
+            'Light Volcanic Ash': 'Avoid going outside',
+            'Heavy Volcanic Ash': 'Avoid going outside',
+            'Light Widespread Dust': 'Light Jacket, Eye Protection, Avoid going outside',
+            'Heavy Widespread Dust': 'Light Jacket, Eye Protection, Avoid going outside',
+            'Light Sand': 'Dust Mask',
+            'Heavy Sand': 'Dust Mask',
+            'Light Sandstorm': 'Dust Mask',
+            'Heavy Sandstorm': 'Dust Mask',
+            'Heavy Blowing Snow': 'Gloves, Warm Hat, Winter Jacket, Boots, Face Mask',
+            'Light Blowing Snow': 'Gloves, Warm Hat, Winter Jacket, Boots, Face Mask',
+            'Heavy Blowing Sand': 'Face Mask, Eye Protection, Light Jacket',
+            'Light Blowing Sand': 'Face Mask, Eye Protection, Light Jacket',
+            'Light Rain Mist': 'Umbrella, Waterproof Jacket, Long Pants',
+            'Heavy Rain Mist': 'Umbrella, Waterproof Jacket, Long Pants',
+            'Light Rain Showers': 'Umbrella, Waterproof Jacket, Long Pants',
+            'Heavy Rain Showers': 'Umbrella, Waterproof Jacket, Long Pants',
+            'Light Snow Showers': 'Umbrella',
+            'Heavy Snow Showers': 'Umbrella',
+            'Light Snow Blowing Snow Mist': 'Umbrella',
+            'Heavy Snow Blowing Snow Mist': 'Umbrella',
+            'Heavy Ice Pellet Showers': 'Umbrella',
+            'Light Ice Pellet Showers': 'Umbrella',
+            'Light Hail Showers': 'Umbrella',
+            'Heavy Hail Showers': 'Umbrella',
+            'Light Small Hail Showers': 'Umbrella',
+            'Heavy Small Hail Showers': 'Umbrella',
+            'Heavy Thunderstorm': 'Umbrella, Rain Jacket, Rain Boots, Long Pants',
+            'Light Thunderstorm': 'Umbrella, Rain Jacket, Rain Boots, Long Pants',
+            'Light Thunderstorms and Rain': 'Umbrella, Rain Jacket, Rain Boots, Long Pants',
+            'Heavy Thunderstorms and Rain': 'Umbrella, Rain Jacket, Rain Boots, Long Pants',
+            'Light Thunderstorms and Snow': 'Umbrella',
+            'Heavy Thunderstorms and Snow': 'Umbrella',
+            'Light Thunderstorms and Ice Pellets': 'Umbrella',
+            'Heavy Thunderstorms and Ice Pellets': 'Umbrella',
+            'Light Thunderstorms with Hail': 'Umbrella',
+            'Heavy Thunderstorms with Hail': 'Umbrella',
+            'Light Thunderstorms with Small Hail': 'Umbrella',
+            'Heavy Thunderstorms with Small Hail': 'Umbrella',
+            'Light Freezing Drizzle': 'Umbrella, Waterproof Winter Jacket, Winter Boots, Long Pants, Gloves',
+            'Heavy Freezing Drizzle': 'Umbrella, Waterproof Winter Jacket, Winter Boots, Long Pants, Gloves',
+            'Light Freezing Rain': 'Umbrella, Waterproof Winter Jacket, Winter Boots, Long Pants, Gloves',
+            'Heavy Freezing Rain': 'Umbrella, Waterproof Winter Jacket, Winter Boots, Long Pants, Gloves',
+            'Light Freezing Fog;': '',
+            'Heavy Freezing Fog;': '',
+            'Patches of Fog': '',
+            'Shallow Fog': '',
+            'Partial Fog': '',
+            'Overcast': 'Jacket',
+            'Clear': 'Sunblock, Sunglasses',
+            'Partly Cloudy': 'Sunglasses',
+            'Mostly Cloudy': 'Coat',
+            'Scattered Clouds': '',
+            'Small Hail': '',
+            'Squalls': '',
+            'Funnel Cloud': '',
+            'Unknown Precipitation': '',
+            'Unknown': ''
+        }
+        for (var key in weatherArr) {
+            if (key === weatherStr) {
+                return weatherArr[key]
+            }
+        }
     }
     </script>
 </body>
