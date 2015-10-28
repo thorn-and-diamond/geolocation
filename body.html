@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<p>Click the button to get your coordinates.</p>
+
+
+<button onclick="getLocation()">Try It</button>
+
+
+<div class="container main">
+    <div id="head"></div>
+    <div id="subhead"></div>
+    <div id="today"></div>
+    <div id="7days"></div>
+</div>
+
+<script>
+var testmode= true;
+var currLong = 0;
+var currLat = 0;
+var response = {};
+var loc = {};
+var allResponse = {};
+
+function getLocation() {
+    if (testmode){
+      getLocWeather();
+    }else if (navigator.geolocation) {
+      
+       navigator.geolocation.getCurrentPosition(getLocWeather);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function getLocWeather(position) {
+    currLong = -121.30594980000001;
+    currLat = 38.874983;
+ 
+    $.ajax({
+              /*url: "file:///Users/davebrazell/dev/geolocation/data/test10.json",*/
+          url : "https://api.wunderground.com/api/6887efd8390c8e5e/forecast10day/q/" + 
+                   currLat  + "," + currLong + ".json",
+          dataType : "jsonp",
+          success : function(parsed_json) {
+              response = parsed_json['forecast']['simpleforecast']['forecastday']; 
+              var mytime = response[0].date.pretty.split(" ");
+              
+              var myOutPut = "<h3>" + response[0].date.weekday + " "
+                    + mytime[0] + " " + mytime[1] + "</h3><h3>" + response[0].conditions + 
+                    '</h3><p style="font-size:50px"><img src="' + response[0].icon_url + '"/> ' + 
+                    response[0].high.fahrenheit + "<sup style='font-size:30px'>o</sup></p>";
+                      
+               
+            /*  $('#subhead').html(myOutPut);      */
+          }
+    });   
+
+var getCitySt = function(){
+  $.ajax({
+             /*url: "file:///Users/davebrazell/dev/geolocation/data/test.json",*/
+          url : "https://api.wunderground.com/api/6887efd8390c8e5e/conditions/q/" + 
+                   currLat  + "," + currLong + ".json",
+          dataType : "jsonp",
+          success : function(parsed_json) {
+              loc = parsed_json['current_observation']; 
+              wday = loc.observation_time_rfc822.split(" ") ;
+              ltime = loc.observation_time.split(" ");
+              myOutPut = "<h2>" + loc.display_location.full + "</h2><h3>" + 
+              wday[0] + " " + ltime[5] + " " + ltime[6] + "</h3><h3>" + loc.weather +
+              "</h3><div style='font-size:60px'><img src=" +'"' + loc.icon_url + '"' + "/>" + 
+              " " + loc.temp_f +"<sup style='vertical-align:text-top; font-size:30%'>" +
+              "o</sup><sup style='vertical-align:text-top; font-size:30%; margin-top:" +
+              "20px'>F</sup></div>";
+
+
+              $('#head').html(myOutPut);
+
+
+          }
+    });
+}
+
+
+    getCitySt();
+   
+}
+
+
+</script>
+
+</body>
+</html>
+
+
