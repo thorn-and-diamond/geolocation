@@ -75,7 +75,11 @@ var getCitySt = function(){
               "</h3><div style='font-size:60px'><img src=" +'"' + loc.icon_url + '"' + "/>" + 
               " " + loc.temp_f +"<sup style='vertical-align:text-top; font-size:30%'>" +
               "o</sup><sup style='vertical-align:text-top; font-size:30%; margin-top:" +
-              "20px'>F</sup></div>";
+              "20px'>F</sup></div><div class='right'><p>Precipitation: " + response[0].pop + 
+              "%</p><p>Humidity: " + loc.relative_humidity + "</p><p>Wind: " + loc.wind_mph
+               + " mph</p>";
+
+
 
 
               $('#head').html(myOutPut);
