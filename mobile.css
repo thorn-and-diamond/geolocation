@@ -7,7 +7,6 @@
   button {
     min-width: 48px;
     min-height: 48px;
-    margin: 0 auto;
   }
 
 
@@ -18,15 +17,12 @@
       text-align: center;
     }
     header < h1 {
-      font-size: 1em;
+      font-size: .75em;
       font-weight: 300;
       position: relative;
     }
 
     h1{
-      padding-left: .25em;
-      padding-bottom: .25em;
-      padding-top: .25em;
       background-color: white;
       margin: 0 auto;
     }
@@ -34,14 +30,12 @@
     body {
       background-color: #ADD8E6;
     }
-    .content {
-      background-color: blanchedalmond;
-    }
-
     .img-responsive {
       margin: 0 auto;
     }
     h2 {
       font-size: 1.25em;
+      text-align: justify; 
+      margin-left: 1.5em;
     }
 }
