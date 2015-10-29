@@ -1,8 +1,8 @@
 /* values for both mobile & desktop */
-
-
-
-
+  
+body{font-family: 'Roboto', sans-serif;}
+    
+h2 {color: #5E777A;}
 
 /* trying out media queries large screen */
 @media screen and (min-width: 480px) {
@@ -14,19 +14,29 @@
     }
 
     h1{
-      padding-left: 2em;
+      padding-left: 5em;
       padding-bottom: 1em;
-      padding-top: 1em;
-      background-color: white;
+      padding-top: .5em;
+      background-color:  white;
       margin: 0 auto;
+      font-weight: bold; 
+      letter-spacing: -1px; 
+      line-height: 1; 
     }
 
     body {
-      background-color: lightgreen;
+      background-color: #96D5EB;
     }
+
     h2 {
       font-size: 2.25em;
+      display:inline-block; 
+      padding:1em;
+      text-shadow: 1px 1px 1px #000;
+      letter-spacing: .05em;}
     }
+
+
     
 }
 
