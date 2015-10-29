@@ -35,7 +35,7 @@
             <!-- navigation -->
             <div class="list-group">
                 <a href="#todaysWeather" class="list-group-item active">Today's Weather<a>
-              <a href="#sevenDayForecast" class="list-group-item">7 Day Weather</a>
+              <a href="#threeForecast" class="list-group-item">3 Day Weather</a>
                 <a href="#whatToWear" class="list-group-item"> What to wear</a>
                 <a href="#map" class="list-group-item"> Map</a>
             </div>
@@ -48,6 +48,10 @@
             <a name="#todaysWeather"> Today's Weather </a>
             <p>
                 <div id="todaysWeather"></div>
+                <!-- 2 tags below for api fill -->
+                <div id="head"></div>
+                <div id="today"></div>
+                <div id="todayR"></div>
             </p>
         </div>
         <div class="col-xs-1"></div>
@@ -56,9 +60,11 @@
     <div class="row">
         <div class="col-xs-1"></div>
         <div class="col-xs-10">
-            <a name="sevenDayForecast"> 7 Day Forecast </a>
-            <p>
-            </p>
+            <a name="threeForecast"> 3 Day Forecast </a>
+            <!-- 3 tags below for api fill -->
+            <div id="day1"></div>
+            <div id="day2"></div>
+            <div id="day3"></div>   
         </div>
         <div class="col-xs-1"></div>
     </div>
