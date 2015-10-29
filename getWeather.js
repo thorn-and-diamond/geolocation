@@ -11,18 +11,18 @@ var displayHead = function(){
                         var ltime = loc.observation_time.split(" ");
                         var myOutPut = "<h2>" + loc.display_location.full + 
                         "</h2><h3>" + wday[0] + " " + ltime[5] + " " +
-                        ltime[6] + "</h3><h3>" + loc.weather + "</h3>"
+                        ltime[6] + "</h3><h3>" + loc.weather + "</h3>";
 
                        $('#head').html(myOutPut);
 
-}
+};
 
 var displayToday = function(){
                     var myOutPut = "<img src=" +'"' + loc.icon_url + '"' + "/>" + 
                     " " + loc.temp_f +"<sup>" +"o</sup><sup >F</sup>";
                     
                     $('#today').html(myOutPut);
-}
+};
 
 var displayTodayR = function(){
                     myOutPut = "<div class='right'><p>Precipitation: " + response[0].pop + 
@@ -30,7 +30,7 @@ var displayTodayR = function(){
                     + " mph</p>";
 
                   $('#todayR').html(myOutPut);
-}
+};
 
 var getForeCast = function(num){
       if (num === response.length) return;
@@ -40,7 +40,7 @@ var getForeCast = function(num){
                           " " + response[num].low.fahrenheit + "</p>";
                           $(tmpdiv).html(outStr);
                           getForeCast(num+1);
-}
+};
 
 
 function getLocation() {
