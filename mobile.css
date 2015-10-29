@@ -1,0 +1,47 @@
+
+
+/* catch all for responsiveness */
+  img, embed, object, video {
+    max-width: 100%
+  }
+  button {
+    min-width: 48px;
+    min-height: 48px;
+    margin: 0 auto;
+  }
+
+
+/* trying out media queries small screen */
+@media only screen and (max-width: 480px) {
+    header {
+      background-color: #FFF5EE;
+      text-align: center;
+    }
+    header < h1 {
+      font-size: 1em;
+      font-weight: 300;
+      position: relative;
+    }
+
+    h1{
+      padding-left: .25em;
+      padding-bottom: .25em;
+      padding-top: .25em;
+      background-color: white;
+      margin: 0 auto;
+    }
+
+    body {
+      background-color: #ADD8E6;
+    }
+    .content {
+      background-color: blanchedalmond;
+    }
+
+    .img-responsive {
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 1.25em;
+    }
+}

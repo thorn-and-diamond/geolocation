@@ -1,96 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Weather to Wear </title>
-    <!--- following three links are for bootstrap libraries 
-    Latest compiled and minified CSS  -->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <!--specialized CSS styles clarity, must be AFTER bootstrap -->
-    <!-- desktop css -->
-    <link rel="stylesheet" href="main.css">
-    <!-- mobile css -->
-    <link rel="stylesheet" href="mobile.css">
-
-    <script src="getWeather.js"></script>
-    <script src="data/forecast.json"></script>
-    <script src="data/test.json"></script>
-    <script src="data/test10.json"></script>
-</head>
-<header>
-        <h1>Weather to Wear</h1>
-</header>
-<body>
-<!-- Today's Weather -->
-    <div class="row">
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-        <div class="col-xs-8 col-md-8 col-lg-8">
-            <a name="#todaysWeather"><h2>Today's Weather</h2></a>
-                <div id="todaysWeather"></div>
-                <!-- 2 tags below for api fill -->
-                <div id="head"></div>
-                <div id="today"></div>
-                <div id="todayR"></div>
-                <!-- placeholder for content  -->
-                <img src="http://placehold.it/400x500">
-                <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-        </div>
-   <!--      <div class="col-xs-2 col-md-2 col-lg-2"></div> -->
-    </div>
-<!-- 3 day Weather -->
-    <div class="row">
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-        <div class="col-xs-8 col-md-8 col-lg-8">
-            <a name="threeForecast"><h2>3 Day Forecast</h2></a>
-            <!-- 3 tags below for api fill -->
-            <div id="day1"></div>
-            <div id="day2"></div>
-            <div id="day3"></div>   
-            <!-- placeholder for content  -->
-            <img src="http://placehold.it/400x500">
-            <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-        </div>
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-    </div>
-<!-- What to wear -->
-    <div class="row">
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-        <div class="col-xs-8 col-md-8 col-lg-8">
-            <a name="whatToWear"><h2>What to Wear</h2></a>
-                <div id="whatToWear">
-                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-                </div>
-        </div>
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-    </div>
-<!-- Live Map -->
-    <div class="row">
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-        <div id="map" class="col-xs-8 col-md-8 col-lg-8">
-            <a name="map">
-            <img class="img-responsive" src="http://placehold.it/350x150"></a>
-            <p>Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-        </div>
-    </div>
-<!-- Coordinates -->
-    <div class="row">
-        <div class="col-xs-2 col-md-2 col-lg-2"></div>
-        <div class="col-xs-8 col-md-8 col-lg-8">
-            <button type="button" class="btn btn-primary" onclick="getLocation()"> Press for personalized weather </button>
-            <div id="demo"></div>
-        </div>
-   <div class="col-xs-2 col-md-2 col-lg-2"></div>
-    </div>
-
-    <script>
     var x = document.getElementById("demo");
 
     function getLocation() {
@@ -126,17 +33,21 @@
     }
     //function that loads additional acsesories depending on weather (rain, sunny etc.)
     var weatherAccessories = function(weatherStr) {
-        //should this be weatherObj?
         var weatherArr = {
+            'Light Drizzle': 'Umbrella, Rainboots, Rain Jacket',
+            //duplicate?
             'Light Drizzle': 'Umbrella, Rainboots, Rain Jacket',
             'Light Rain': 'Umbrella, Rainboots, Rain Jacket',
             'Heavy Rain': 'Umbrella, Rainboots, Rain Jacket',
             'Light Snow': 'Gloves, Warm Hat, Winter Jacket, Boots',
             'Heavy Snow': 'Gloves, Warm Hat, Winter Jacket, Boots',
             'Light Snow Grains': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            //duplicate? snow grains = flakes?
+            'Light Snow Grains': 'Gloves, Warm Hat, Winter Jacket, Boots',
             'Heavy Snow Grains': 'Gloves, Warm Hat, Winter Jacket, Boots',
             'Light Ice Crystals': 'Gloves, Warm Hat, Winter Jacket, Boots',
             'Heavy Ice Crystals': 'Gloves, Warm Hat, Winter Jacket, Boots',
+            // hail?
             'Light Ice Pellets': 'Gloves, Warm Hat, Winter Jacket, Boots',
             'Heavy Ice Pellets': 'Gloves, Warm Hat, Winter Jacket, Boots',
             'Light Hail': 'Gloves, Warm Hat, Winter Jacket, Boots',
@@ -213,7 +124,3 @@
             }
         }
     };
-    </script>
-</body>
-
-</html>
