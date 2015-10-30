@@ -28,15 +28,26 @@ h2 {color: #5E777A;}
       background-color: #96D5EB;
     }
 
-    h2 {
+    h2, h3, p {
       font-size: 2.25em;
       display:inline-block; 
       padding:1em;
       text-shadow: 1px 1px 1px #000;
       letter-spacing: .05em;}
     }
+    #today{
+      color: #000080;
+    }
 
-     #demo, #map, #whatToWear, #threeForecast, #todaysWeather{
+    a {
+      color: #000080;
+      text-align: center;
+      font-size: 1.75em;
+
+    }
+
+     #demo, #map, #whatToWear, #threeForecast {
+      color: #000080;
       font-size: 2em;
       text-align: center;
     }   
