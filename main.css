@@ -36,7 +36,10 @@ h2 {color: #5E777A;}
       letter-spacing: .05em;}
     }
 
-
-    
+     #demo, #map, #whatToWear, #threeForecast, #todaysWeather{
+      color: #6B8E23;
+      font-size: 2em;
+      text-align: center;
+    }   
 }
 
