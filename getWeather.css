@@ -1,0 +1,40 @@
+#today{
+    display:inline-block;
+    font-size:100;
+}
+
+#todayR{
+
+}
+
+#today img{
+    display:inline-block;
+    width:115px;
+    height:115px;
+}
+
+#temp{
+    display:inline-block;
+    font-size:100px;
+    vertical-align:bottom;
+}
+
+.degree{
+    font-size:40px;
+    vertical-align:text-top;
+}
+
+.threeday{
+
+    text-align:center;
+
+
+  }
+
+
+.threeday img{
+    text-align:center;
+    width:75px;
+    height:75px;
+}
+
