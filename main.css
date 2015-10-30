@@ -45,8 +45,7 @@ h2 {color: #5E777A;}
       font-size: 1.75em;
 
     }
-
-     #demo, #map, #whatToWear, #threeForecast {
+     #demo, #map, #whatToWear, #threeForecast, #todaysWeather{
       color: #000080;
       font-size: 2em;
       text-align: center;
